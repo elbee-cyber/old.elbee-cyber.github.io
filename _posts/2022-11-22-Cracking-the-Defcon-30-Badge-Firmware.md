@@ -33,3 +33,21 @@ Unfortunatelly, the whole ordeal was pretty messy and resulted in a bit of coppe
   <img src="/assets/2022-11-22/Screenshot_3.png" />
 </p>
 <br>
+In my ubuntu machine I use <a href="https://gitlab.com/DavidGriffith/minipro/">the minipro program</a> to interact with the chip programmer. The following command writes the firmware to a file. 
+```
+minipro -p "W25Q16JV@SOIC8" -r flash.bin
+```
+
+I can verify that this is the firmware by running `strings` and examining the output.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_4.png" />
+</p>
+<br>
+
+## To be continued... (THIS PROJECT IS STILL IN PROGRESS)
+
+### Resources
+- https://research.kudelskisecurity.com/2018/09/25/analyzing-arm-cortex-based-mcu-firmwares-using-binary-ninja/
+- https://www.winbond.com/hq/support/documentation/levelOne.jsp?__locale=en&DocNo=DA00-W25Q16JV.1
+- https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf
