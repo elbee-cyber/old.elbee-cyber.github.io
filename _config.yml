@@ -3,7 +3,7 @@ name: Dylan Knoff
 
 title: FaultPoint Blog
 description: >- # this means to ignore newlines until "baseurl:"
-  I'm Dylan, a undergraduate CS student at George Mason and independent security researcher. This blog is where I post articles relating to CTFs, personal projects, hacking and whatever else is appropiate.
+  I'm Dylan, a undergraduate CS student at George Mason and independent security researcher. This blog is where I post articles relating to CTFs, personal projects, hacking and whatever else is appropiate. <a href="/blog.html">Go to blog</a>
 
 email: dontopenthis@protonmail.com
 
@@ -42,7 +42,7 @@ markdown: kramdown
 
 jekyll-theme-experiment:
   about:
-    avatar : https://66.media.tumblr.com/c78ee0bb96f9feb8949b016543d4344c/tumblr_o96yf3dm4C1s13tcmo1_500.gif
+    avatar :https://64.media.tumblr.com/3261894a2d13729b5be3a6dd1797ad3c/tumblr_nzmlu6EAT11spqzn1o1_500.gif
 
 
 
