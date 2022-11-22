@@ -14,10 +14,13 @@ Once upon a time I was very excited to fly to Las Vegas and attend <a href="http
 
 ### Part 1: Extracting Firmware from SPI Flash
 I began by using a magnifying glass, pen and paper to identify all the visible chips on the PCB. 
+<br />
 ![](/assets/2022-11-22/Screenshot_1.png)
 The two important chips to note are the <a href="https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q16JV">Winbond W25Q16JV</a> (flash chip) and the <a href="https://thepihut.com/products/raspberry-pi-rp2040-microcontroller">RP2 B2</a> (microcontroller). The flash memory chip will be used to grab the firmware and will be the target chip to physically extract. The microcontroller will be used to determine the architecture, conventions and other information that will be useful when analyzing the firmware.
 
 There are tools available to extract firmware from a surface-mounted chip without having to actually remove the component, however I will be using a <a href="https://www.aliexpress.us/item/2251832631316605.html?spm=a2g0o.ppclist.product.2.42fduQgFuQgFn0&pdp_npi=2%40dis%21USD%21US%20%248.25%21%248.00%21%21%21%21%21%402101c84a16691420847026788ea9a4%2112000018677635870%21btf&_t=pvid%3A91be51b8-068b-46f5-ad65-2474e20aa1d4&afTraceInfo=32817631357__pc__pcBridgePPC__xxxxxx__1669142084&gatewayAdapt=glo2usa&_randl_shipto=US">TL866II+ universal programmer</a>, so I will have to remove the chip from the PCB, feed the chip to the device using the appropiate adapter and connect the programmer to my VM for extraction. A heat gun would be ideal for removing a small surface mounted chip like this without damaging the PCB, however I do not have access to such equipment, so I use a soldering iron and tweezers. I heat up each joint of the chip with the iron and lift the leg up with tweezers and a magnifying glass. After I have detatched the chip from the board, I go around with the iron again and a desoldering pump in an attempt to clean up as much excess solder as possible from each leg. Then I lock the flash chip in the corresponding adapter and insert it into the TL866II+.
+<br />
 ![](/assets/2022-11-22/Screenshot_2.png)
 Unfortunatelly, the whole ordeal was pretty messy and resulted in a bit of copper from the PCB being destroyed.
+<br />
 ![](/assets/2022-11-22/Screenshot_3.png)
