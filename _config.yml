@@ -42,7 +42,7 @@ markdown: kramdown
 
 jekyll-theme-experiment:
   about:
-    avatar: https://64.media.tumblr.com/3261894a2d13729b5be3a6dd1797ad3c/tumblr_nzmlu6EAT11spqzn1o1_500.gif
+    avatar: /assets/old_pc.gif
 
 
 
