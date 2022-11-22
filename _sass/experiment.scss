@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+// Define defaults for each variable.
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$base-font-size:   16px !default;
+$base-font-weight: 400 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+
+$spacing-unit:     30px !default;
+
+$text-color:       #111 !default;
+$background-color: #fdfdfd !default;
+$brand-color:      #EC7263!default;
+
+$grey-color:       #828282 !default;
+$grey-color-light: lighten($grey-color, 40%) !default;
+$grey-color-dark:  darken($grey-color, 25%) !default;
+
+$purple-color: rgb(70,50,76);
+$purple-color-transparent: rgba(70,50,76,0.9);
+// $table-text-align: left !default;
+
+//Width of the content area
+$content-width:    800px !default;
+//
+$on-phone:         400px !default;
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
+
+// Import partials.
+@import
+  "experiment/reset",
+  "experiment/syntax-highlighting",
+  "experiment/layout",
+  //components
+  "experiment/modules/avatar",
+  "experiment/modules/content_tools",
+  "experiment/modules/hr",
+  "experiment/modules/information-box",
+  "experiment/modules/nav_portafolio",
+  "experiment/modules/navbar",
+  "experiment/modules/post"
+;

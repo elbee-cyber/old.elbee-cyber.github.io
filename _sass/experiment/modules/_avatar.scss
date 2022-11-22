@@ -1,0 +1,14 @@
+.avatar {
+  flex-grow: 1;
+  img {
+    margin: 0 auto;
+    display: block;
+    width: 250px;
+  }
+}
+
+.icon-media {
+  a {
+    margin:  0 $spacing-unit / 3 ;
+  }
+}
