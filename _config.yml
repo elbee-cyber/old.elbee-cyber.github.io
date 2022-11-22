@@ -1,23 +1,21 @@
-author: GitHub User
-name: Your Username
+author: elbee-cyber
+name: Dylan Knoff
 
-title: your awesome title
+title: FaultPoint
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  I'm Dylan, a undergraduate CS student at George Mason and independent security researcher. This blog is where I'll post articles relating to CTFs, personal projects, hacking or whatever else is appropiate.
 
-email: your-email@domain.com
+email: dontopenthis@protonmail.com
 
 # social links
-twitter_username: anxhe_
-github_username:  anxhe
+twitter_username: elbee_ez
+github_username:  elbee-cyber
 # rss: rss
 #dribbble_username: jekyll
 #facebook_username: jekyll
 #flickr_username: jekyll
-#instagram_username: jekyll
-#linkedin_username: jekyll
+instagram_username: dylan.kno
+linkedin_username: dylan-knoff
 #pinterest_username: jekyll
 #youtube_username: jekyll
 #googleplus_username: +jekyll
@@ -44,7 +42,7 @@ markdown: kramdown
 
 jekyll-theme-experiment:
   about:
-    avatar : https://robohash.org/experiment-avatar.png?size=300x300
+    avatar : https://i.pinimg.com/originals/d0/70/71/d07071a12b468ac4afc310f7e42066b9.gif
 
   portfolio:
     title: Portfolio
