@@ -7,12 +7,7 @@ Physical firmware extraction and reverse engineering of the DEFCON 30 badge.
 
 ## Cracking the DEFCON 30 Badge Firmware
 
-<script> 
-    $(function(){
-      $("#includedContent").load("/assets/disclaimer.md"); 
-    });
-</script>
-<div id="includedContent"></div>
+> **_NOTE:_**  This article represents an area or subject that I am activley learning and is meant for documentational/educational/entertainment purposes. It should not be heeded as professional advice. Please notify me of errors using any of my socials below.
 
 Before beginning this post there are some important things to note. At the time of this post, I am very inexperienced in the world of hardware, IoT, firmware extraction and firmware analysis. Because of this, the majority of my process, including the use of the physical equipment used to interact with the flash chip, was done via trial and error. This is a very dirty article by someone who barley knows what they're doing, but I think it is still important to post this to demonstrate the learning process.
 
