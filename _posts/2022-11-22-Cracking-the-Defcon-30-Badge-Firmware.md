@@ -65,7 +65,7 @@ The MCU is a rpi2040 which makes use of the <a href="https://en.wikipedia.org/wi
 </p>
 <br>
 
-Using Binaryninja I can specify the base address when creating a new project.
+Using Binaryninja I can specify the base address when creating a new project. Binja automatically detects the thumb2 ARM architecture.
 <br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_6.png" />
