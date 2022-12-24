@@ -6,12 +6,13 @@ title: Cracking the DEFCON 30 Badge Firmware
 **2022-11-22**
 Physical firmware extraction and reverse engineering of the DEFCON 30 badge.
 
-## Cracking the DEFCON 30 Badge Firmware
-
 # Table of contents
 1. [Backstory](#backstory)
 2. [Firmware Extraction](#extraction)
 3. [Analysis and Finding Check](#analysis)
+
+
+## Cracking the DEFCON 30 Badge Firmware
 
 > **_NOTE:_**  This article represents an area or subject that I am activley learning and is meant for documentational/educational/entertainment purposes. It should not be heeded as professional advice. Please notify me of errors using any of my socials below.
 
@@ -70,6 +71,24 @@ Using Binaryninja I can specify the base address when creating a new project.
   <img src="/assets/2022-11-22/Screenshot_6.png" />
 </p>
 <br>
+
+I start to try and identify useful symbols and organize the code by searching through strings and going to their code references.
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_7.png" />
+</p>
+<br>
+
+Some areas have been incorrectly loaded as symbols so I undefine them.
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_8.png" />
+</p>
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_9.png" />
+</p>
+<br>
+
+
 
 
 
