@@ -189,3 +189,4 @@ The following is the correct key-combination/tune we need to play on the badge k
 ### Sources
 - https://www.winbond.com/hq/support/documentation/levelOne.jsp?__locale=en&DocNo=DA00-W25Q16JV.1
 - https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf
+
