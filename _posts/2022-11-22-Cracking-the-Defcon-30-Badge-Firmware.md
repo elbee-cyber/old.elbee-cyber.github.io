@@ -3,7 +3,7 @@ layout: post
 title: Cracking the DEFCON 30 Badge Firmware
 ---
 
-**2022-11-22**
+Published on: **2022-11-22** and last edited on: **2022-12-24**
 
 # Table of contents
 1. [Backstory](#backstory)
