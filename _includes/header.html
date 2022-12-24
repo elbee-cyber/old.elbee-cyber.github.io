@@ -3,7 +3,6 @@
   {% assign page_paths = site.header_pages | default: default_paths %}
   <span class="burguer-button" id='burguer-button'><i class="fas fa-bars"></i></span>
   <div class="navbar-item">
-    {% include share-buttons.html %}
     {% for path in page_paths %}
       {% assign my_page = site.html_pages | where: "path", path | first %}
       {% if my_page.title %}
