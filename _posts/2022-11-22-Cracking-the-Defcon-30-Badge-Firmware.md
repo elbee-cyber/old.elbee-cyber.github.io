@@ -58,7 +58,7 @@ I can verify that this is the firmware by running `strings` and examining the ou
 
 <a name="analysis"></a>
 # Part 2: Analyzing Firmware and Finding the Comparison Function
-The MCU is a rpi2040 which makes use of the <a href="https://en.wikipedia.org/wiki/Execute_in_place">"execute in place"</a> feature. This is a feature that improves performance by enabling execution directly in flash storage rather than execution in the MCU's limited memory area. It is important that we keep this in mind before starting to analyze the firmware. Firmware has no entry point and instead has a defined address at which program execution begins at. We can find this base address by viewing the <a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf">rpi2040 datasheet</a> and navigating to the "Address Map" page from the table of contents. The base address will be the XIP address (execute in place). We need to specify this address as the base address in whatever we use to analyze the firmware to load the correct segment.
+The MCU is a rpi2040 which makes use of the <a href="https://en.wikipedia.org/wiki/Execute_in_place">"execute in place"</a> feature. This is a feature that improves performance by enabling execution directly in flash storage rather than execution in the MCU's limited memory area. It is important that we keep this in mind before starting to analyze the firmware. Firmware has no entry point and instead has a defined address at which program execution begins. We can find this base address by viewing the <a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf">rpi2040 datasheet</a> and navigating to the "Address Map" page from the table of contents. The base address will be the XIP address (execute in place). We need to specify this address as the base address in whatever we use to analyze the firmware to load the correct segment.
 <br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_5.png" />
@@ -104,7 +104,7 @@ Identifying and following the code reference of the interesting string, "YOU DID
 </p>
 <br>
 
-The only code reference leads to the following function. The first thing I noted when initially examining it was the comparison inside the loop to 0x2d. This conditional is equal to `if(r3_1 == 46` since the if-statement ends in a break. Examining the note count on my own badge and noting the number of badges with different variations, we know the total number of piano keys that make-up the passing combo is 46, since all badge's music sheets will be used.
+The only code reference leads to the following function. The first thing I noted when initially examining it was the comparison inside the loop to 0x2d. This conditional is equal to `if(r3_1 == 0x2d(which is 46))` since the if-statement ends in a break. Examining the note count on my own badge and noting the number of badges with different variations, we know the total number of piano keys that make-up the passing combo is 46, since all badge's music sheets will be used.
 <br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_12.png" />
@@ -115,10 +115,10 @@ The decompilation process complicated this loop a bit, so for sanity's sake lets
 
 `C@><>@C@><>@C@CE@EC@><C@><>@C@><>@>@C@CE@EGDB@`
 
-Since each key press is being compared with this string, it is safe to assume that each character in this string is mapped to a physical key on the badge. We should find another function which identifies this mapping. This would likely be the keypress functions directly.
+Since each key press is being compared with this string, it is safe to assume that each character in this string is mapped to a physical key on the badge. We should find another function which identifies this mapping. This would likely be the keypress code blobs directly.
 
-Somethings to note before continuing:
-- User key buffer stored @ 0x2000xxxx.
+Some things to note before continuing:
+- User key buffer stored @ 0x2000xxxx (keypresses).
 - The checkwin function will likely be called every time a key is pressed, to check if the newly modified buffer is a win.
 
 <a name="mapping"></a>
@@ -142,7 +142,7 @@ Examining the very first reference we can take note that a pointer is being pass
 </p>
 <br>
 
-Each blob that assigns a mapping is sequential in the code block. I can safely assume that these are the keyboard mappings called in order as they appear on the physical keyboard.
+Each blob that assigns a mapping is sequential in the code block, so I can safely assume that these are the keyboard mappings assigned in the order as they appear on the physical keyboard.
 <br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_16.png" />
@@ -172,8 +172,8 @@ Proceeding through every checkwin calll will reveal the character mappings for t
 
 With these mappings we can decipher the string compared in the checkwin function to the equivalent keys on the keyboard.
 ```python3
-key_map = {"<":"C","=":"C#",">":"D","?":"D#","@":"E","A":"F","B":"F#","C":"G","D":"G#",
-"E":"A","F":"A#","G":"B"}
+key_map = {"<":"C","=":"C#",">":"D","?":"D#","@":"E","A":"F",
+"B":"F#","C":"G","D":"G#","E":"A","F":"A#","G":"B"}
 key_combo = ""
 for c in "C@><>@C@><>@C@CE@EC@><C@><>@C@><>@>@C@CE@EGDB@":
   key_combo += key_map.get(c)+" "
