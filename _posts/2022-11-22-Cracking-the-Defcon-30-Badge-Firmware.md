@@ -10,6 +10,7 @@ Physical firmware extraction and reverse engineering of the DEFCON 30 badge.
 1. [Backstory](#backstory)
 2. [Firmware Extraction](#extraction)
 3. [Analysis and Finding Check](#analysis)
+4. [Mapping and Decoding](#mapping)
 
 
 ## Cracking the DEFCON 30 Badge Firmware
@@ -73,12 +74,14 @@ Using Binaryninja I can specify the base address when creating a new project.
 <br>
 
 I start to try and identify useful symbols and organize the code by searching through strings and going to their code references.
+<br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_7.png" />
 </p>
 <br>
 
 Some areas have been incorrectly loaded as symbols so I undefine them.
+<br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_8.png" />
 </p>
@@ -88,11 +91,101 @@ Some areas have been incorrectly loaded as symbols so I undefine them.
 </p>
 <br>
 
+I also rename symbols that have obvious functions for clarity.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_10.png" />
+</p>
+<br>
 
+Identifying and following the code reference of the interesting string, "YOU DID IT!" leads to what seems to be the function that is called when a correct key combination is entered.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_11.png" />
+</p>
+<br>
 
+The only code reference leads to the following function. The first thing I noted when initially examining it was the comparison inside the loop to 0x2d. This conditional is equal to `if(r3_1 == 46` since the if-statement ends in a break. Examining the note count on my own badge and noting the number of badges with different variations, we know the total number of piano keys that make-up the passing combo is 46, since all badge's music sheets will be used.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_12.png" />
+</p>
+<br>
+
+The decompilation process complicated this loop a bit, so for sanity's sake lets simplify it a bit in our heads. The while loop iterates over the length of the correct combo, once it reaches 46 (the length of the combo) it succeeds. The second if-statement is most important, it compares every key (it gets the key by referencing the location of the key presses in memory with the offset of the current index) with the given character at **string[index]** if it is not equal, it breaks ending the while loop early and never reaching the success block, else it increments combo_length. So the string in the second conditional is what we need to pay attention too.
+
+`C@><>@C@><>@C@CE@EC@><C@><>@C@><>@>@C@CE@EGDB@`
+
+Since each key press is being compared with this string, it is safe to assume that each character in this string is mapped to a physical key on the badge. We should find another function which identifies this mapping. This would likely be the keypress functions directly.
+
+Somethings to note before continuing:
+- User key buffer stored @ 0x2000xxxx.
+- The checkwin function will likely be called every time a key is pressed, to check if the newly modified buffer is a win.
+
+<a name="mapping"></a>
+# Part 3: Finding the Mapping and Decoding the Key Combo
+checkwin has a lot of code references. Each call is likely in a blob for a key press. I'll pin the references window and tag them all to keep everything organized and visible on the pane.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_13.png" />
+</p>
+<br>
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_14.png" />
+</p>
+<br>
+
+Examining the very first reference we can take note that a pointer is being passed as the argument. The value at this pointer is being assigned above. For this instance that value is 0x3c, whose ascii representation is "<".
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_15.png" />
+</p>
+<br>
+
+Each blob that assigns a mapping is sequential in the code block. I can safely assume that these are the keyboard mappings called in order as they appear on the physical keyboard.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_16.png" />
+</p>
+<br>
+
+Proceeding to the next checkwin call will reveal the mapping for the C# key (the little black key) which comes next.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_17.png" />
+</p>
+<br>
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_18.png" />
+</p>
+<br>
+
+Proceeding through every checkwin calll will reveal the character mappings for the entire keyboard.
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_19.png" />
+</p>
+<br>
+
+### Hurray!
+
+With these mappings we can decipher the string compared in the checkwin function to the equivalent keys on the keyboard.
+```python3
+key_map = {"<":"C","=":"C#",">":"D","?":"D#","@":"E","A":"F","B":"F#","C":"G","D":"G#",
+"E":"A","F":"A#","G":"B"}
+key_combo = ""
+for c in "C@><>@C@><>@C@CE@EC@><C@><>@C@><>@>@C@CE@EGDB@":
+  key_combo += key_map.get(c)+" "
+
+print(key_combo)
+```
+
+The following is the correct key-combination/tune we need to play on the badge keyboard in order to pass the first challenge.
+`G E D C D E G E D C D E G E G A E A G E D C G E D C D E G E D C D E D E G E G A E A B G# F# E`
 
 
 ### Sources
-- https://research.kudelskisecurity.com/2018/09/25/analyzing-arm-cortex-based-mcu-firmwares-using-binary-ninja/
 - https://www.winbond.com/hq/support/documentation/levelOne.jsp?__locale=en&DocNo=DA00-W25Q16JV.1
 - https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf
