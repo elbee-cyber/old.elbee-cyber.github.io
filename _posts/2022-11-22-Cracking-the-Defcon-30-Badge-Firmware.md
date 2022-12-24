@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cracking the DEFCON 30 Badge Firmware | 2022-11-22
+title: Cracking the DEFCON 30 Badge Firmware | **2022-11-22**
 ---
 
 Physical firmware extraction and reverse engineering of the DEFCON 30 badge.
