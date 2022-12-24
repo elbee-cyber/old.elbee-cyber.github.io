@@ -47,7 +47,16 @@ I can verify that this is the firmware by running `strings` and examining the ou
 </p>
 <br>
 
-## To be continued... (THIS PROJECT IS STILL IN PROGRESS)
+### Part 2: Analyzing Firmware and Finding the Comparison Function
+The MCU is a rpi2040 which makes use of the <a href="https://en.wikipedia.org/wiki/Execute_in_place">"execute in place"</a> feature. This is a feature that improves performance by enabling execution directly in flash storage rather than execution in the MCU's limited memory area. It is important that we keep this in mind before we start to analyze the firmware. Firmware has no entry point and instead has a defined address at which program execution begins at. We can find this base address by viewing the <a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf">rpi2040 datasheet</a> and navigating to the "Address Map" page from the table of contents. Our base address will be the XIP address (execute in place). We will need to specify this address as the base address in whatever we use to analyze the firmware.
+
+<br>
+<p align="center">
+  <img src="/assets/2022-11-22/Screenshot_5.png" />
+</p>
+<br>
+
+
 
 ### Resources
 - https://research.kudelskisecurity.com/2018/09/25/analyzing-arm-cortex-based-mcu-firmwares-using-binary-ninja/
