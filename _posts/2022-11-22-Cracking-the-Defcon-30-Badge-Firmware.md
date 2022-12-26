@@ -16,7 +16,7 @@ Published on: **2022-11-22** and last edited on: **2022-12-24**
 
 > **_NOTE:_**  This article represents an area or subject that I am activley learning and is meant for documentational/educational/entertainment purposes. It should not be heeded as professional advice. Please notify me of errors using any of my socials below.
 
-Before beginning this post there are some important things to note. At the time of this post, I am very inexperienced in the world of hardware, IoT, firmware extraction and firmware analysis. Because of this, the majority of my process, including the use of the physical equipment used to interact with the flash chip, was done via trial and error. This is a very dirty article by someone who barley knows what they're doing, but I think it is still important to post this to demonstrate the learning process.
+Before beginning this post there are some important things to note. At the time of this post, I am very inexperienced in the world of hardware, IoT, firmware extraction and firmware analysis. Because of this, the majority of my process, including the use of the physical equipment used to interact with the flash chip, was done via trial and error. This is a very dirty article by someone who barely knows what they're doing, but I think it is still important to post this to demonstrate the learning process.
 
 <a name="backstory"></a>
 ### Backstory and Objective 
@@ -161,7 +161,7 @@ Proceeding to the next checkwin call will reveal the mapping for the C# key (the
 </p>
 <br>
 
-Proceeding through every checkwin calll will reveal the character mappings for the entire keyboard.
+Proceeding through every checkwin call will reveal the character mappings for the entire keyboard.
 <br>
 <p align="center">
   <img src="/assets/2022-11-22/Screenshot_19.png" />
