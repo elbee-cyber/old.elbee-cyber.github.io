@@ -17,9 +17,8 @@ layout: default
         <img src="{{ site.jekyll-theme-experiment.about.avatar }}" alt="avatar">
     </div>
   {% endif %}
-</div>
-<br>
-<div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/24be11449fc194654dfcd53b12e0830c?embedded=1"></div>
+  <br><br><br>
+  <div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/24be11449fc194654dfcd53b12e0830c?embedded=1"></div>
 
 <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
 <script type="text/javascript" src="https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js"></script>
@@ -36,6 +35,7 @@ formkeepEmbed.addEventListener('formkeep-embed:submitted', _event => {
   console.log('Submitted form...')
 })
 </script>
+</div>
 
 {% include portfolio.html %}
 {% include tools.html %}
