@@ -2,6 +2,8 @@
 layout: default
 ---
 
-{% include contact.html %}
+<div class="l-wrap">
+  {% include contact.html %}
+</div>
 
 {% include footer.html %}
