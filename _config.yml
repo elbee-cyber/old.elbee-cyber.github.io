@@ -33,6 +33,7 @@ minima:
 header_pages:
   - index.md
   - blog.md
+  - contact.md
 
 # Config section the home
 
