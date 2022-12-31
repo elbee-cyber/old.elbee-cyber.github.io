@@ -4,7 +4,7 @@ title: Cracking the DEFCON 30 Badge Firmware
 --- 
  
 Published on: **2022-11-22** and last edited on: **2022-12-24** 
- 
+
 # Table of contents 
 1. [Backstory](#backstory) 
 2. [Firmware Extraction](#extraction) 
