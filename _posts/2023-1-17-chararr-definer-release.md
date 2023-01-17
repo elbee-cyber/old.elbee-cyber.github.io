@@ -1,3 +1,10 @@
+--- 
+layout: post 
+title: Binary Ninja Char Arrays Plugin
+--- 
+ 
+Published on: **2023-1-17** and last edited on: **2023-1-17** 
+
 # Timeline
 1. [1/17/2023](#release) 
 
