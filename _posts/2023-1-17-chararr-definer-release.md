@@ -6,10 +6,10 @@ title: Binary Ninja Char Arrays Plugin [RELEASE]
 Published on: **2023-1-17** and last edited on: **2023-1-17** 
 
 # Timeline
-1. [1/17/2023](#release) 
-2. [1/17/2023](#accepted)
+1. [1/17/2023 - Release and Contact](#release) 
+2. [1/17/2023 - Notified of Release on Plugin Manager](#accepted)
 
-# Binary Ninja Char Arrays | 1/17/2023
+# Release of Binary Ninja Char Arrays | 1/17/2023
 Author: **elbee**
 <a name="release"></a>
 Simple plugin that analyzes void variables and loads them as defined character arrays.
@@ -25,8 +25,10 @@ To operate the plugin simply right click in your pane and select an option. The 
 
 This plugin is released under an [MIT license](https://github.com/elbee-cyber/analyze_char_arrays/blob/main/LICENSE).
 
+Release created on hub, issue started on community plugins repo to have published.
+
 <a name="accepted"></a>
-# Released and Issue opened on Binja Community Plugins | 1/17/2023
+# Notified of Releas on Binja Community Plugins | 1/17/2023
 
 <a href="https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0">https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0</a>
 <a href="https://github.com/elbee-cyber/analyze_char_arrays">https://github.com/elbee-cyber/analyze_char_arrays</a>
