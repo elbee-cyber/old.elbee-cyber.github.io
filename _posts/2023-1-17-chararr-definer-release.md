@@ -8,6 +8,7 @@ Published on: **2023-1-17** and last edited on: **2023-1-17**
 # Timeline
 1. [1/17/2023 - Release and Contact](#release) 
 2. [1/17/2023 - Notified of Release on Plugin Manager](#accepted)
+3. [1/18/2023 - Issue](#response)
 
 # Release of Binary Ninja Char Arrays | 1/17/2023
 Author: **elbee**
@@ -37,4 +38,15 @@ Issue closed, approved and set for release on the plugin manager. Plugin mention
 
 <a href="https://github.com/Vector35/community-plugins/issues/204">https://github.com/Vector35/community-plugins/issues/204</a>
 
-As of time of writing the plugin has failed to appear on the plugin manager.
+### As of time of writing the plugin has failed to appear on the plugin manager.
+
+Commit history:
+- https://github.com/Vector35/community-plugins/commit/21694e875326b7859d4657d30f0bee38729c98e7
+
+
+<a name="response"></a>
+# Response on Issue and New Release+Tag | 1/18/2023
+Issue responded to (<a href="https://github.com/Vector35/community-plugins/issues/204">https://github.com/Vector35/community-plugins/issues/204</a>) incorrect name was used on release, new release+tag created. Waiting for resolution.
+
+Minor optimization change on new release: https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.1
+
