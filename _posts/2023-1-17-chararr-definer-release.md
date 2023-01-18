@@ -7,6 +7,7 @@ Published on: **2023-1-17** and last edited on: **2023-1-17**
 
 # Timeline
 1. [1/17/2023](#release) 
+2. [1/17/2023](#accepted)
 
 # Binary Ninja Char Arrays 
 Author: **elbee**
@@ -24,7 +25,13 @@ To operate the plugin simply right click in your pane and select an option. The 
 
 This plugin is released under an [MIT license](https://github.com/elbee-cyber/analyze_char_arrays/blob/main/LICENSE).
 
+<a name="accepted"></a>
 ## 1/17/2023 Released and Issue opened on Binja Community Plugins
 
 <a href="https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0">https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0</a>
 <a href="https://github.com/elbee-cyber/analyze_char_arrays">https://github.com/elbee-cyber/analyze_char_arrays</a>
+
+# Issue closed, approved and set for release on the plugin manager
+## 1/17/2023 Added to Binary Ninja plugin manager
+
+<a href="https://github.com/Vector35/community-plugins/issues/204">https://github.com/Vector35/community-plugins/issues/204</a>
