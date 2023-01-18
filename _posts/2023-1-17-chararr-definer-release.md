@@ -9,7 +9,7 @@ Published on: **2023-1-17** and last edited on: **2023-1-17**
 1. [1/17/2023](#release) 
 2. [1/17/2023](#accepted)
 
-# Binary Ninja Char Arrays 
+# Binary Ninja Char Arrays | 1/17/2023
 Author: **elbee**
 <a name="release"></a>
 Simple plugin that analyzes void variables and loads them as defined character arrays.
@@ -26,12 +26,13 @@ To operate the plugin simply right click in your pane and select an option. The 
 This plugin is released under an [MIT license](https://github.com/elbee-cyber/analyze_char_arrays/blob/main/LICENSE).
 
 <a name="accepted"></a>
-## 1/17/2023 Released and Issue opened on Binja Community Plugins
+# Released and Issue opened on Binja Community Plugins | 1/17/2023
 
 <a href="https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0">https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.0</a>
 <a href="https://github.com/elbee-cyber/analyze_char_arrays">https://github.com/elbee-cyber/analyze_char_arrays</a>
 
-# Issue closed, approved and set for release on the plugin manager
-## 1/17/2023 Added to Binary Ninja plugin manager
+Issue closed, approved and set for release on the plugin manager. Plugin mentioned on active development issue thread <a href="https://github.com/Vector35/binaryninja-api/issues/1637">https://github.com/Vector35/binaryninja-api/issues/1637</a> scheduled for release.
 
 <a href="https://github.com/Vector35/community-plugins/issues/204">https://github.com/Vector35/community-plugins/issues/204</a>
+
+As of time of writing the plugin has failed to appear on the plugin manager.
