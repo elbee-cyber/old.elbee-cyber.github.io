@@ -9,6 +9,7 @@ Published on: **2023-1-17** and last edited on: **2023-1-17**
 1. [1/17/2023 - Release and Contact](#release) 
 2. [1/17/2023 - Notified of Release on Plugin Manager](#accepted)
 3. [1/18/2023 - Issue](#response)
+4. [1/19/2023 - Issue](#resolved)
 
 # Release of Binary Ninja Char Arrays | 1/17/2023
 Author: **elbee**
@@ -50,3 +51,5 @@ Issue responded to (<a href="https://github.com/Vector35/community-plugins/issue
 
 Minor optimization change on new release: https://github.com/elbee-cyber/analyze_char_arrays/releases/tag/1.1
 
+<a name="resolved"></a>
+# All Issues Resolved and Plugin Available | 1/19/2023
