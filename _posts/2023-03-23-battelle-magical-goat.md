@@ -22,7 +22,7 @@ A zip file containing a 32-bit, unstripped ELF is provided as part of the challe
 Starting a Binja project and looking through the strings reveals the following:
 - File operations
 - A filename
-- A flag format string (Character by character, flag is likely calculater within the binary)
+- A flag format string (Character by character, flag is likely calculated within the binary)
 <p align="center"> 
   <img src="/assets/2023-03-23/Screenshot_3.png" /> 
 </p> 
@@ -33,7 +33,7 @@ Starting a Binja project and looking through the strings reveals the following:
   <img src="/assets/2023-03-23/Screenshot_5.png" /> 
 </p> 
 
-Viewing main a function is called which interacts with what is likely the expected file called `give_offering`.
+Viewing main, a function is called which interacts with what is likely the expected file called `give_offering`.
 <p align="center"> 
   <img src="/assets/2023-03-23/Screenshot_6.png" /> 
 </p> 
@@ -49,7 +49,7 @@ Looking at just one of the functions reveals that it is quite complicated.
 <p align="center"> 
   <img src="/assets/2023-03-23/Screenshot_9.png" /> 
 </p> 
-Manually reversing these functions would be significantly detremental to my mental health, so instead I'll use symbolic execution to find an execution path that leads to the flag print and what the file contents need to be in order for this path to execute. Angr is a symbolic execution engine for python that utilizes microsoft's Z3 solver and a simulation manager to manage execution states. It is also capable of file system emulation. Using this feature will be simpler than alternative methods of symbol placement such as directly in memory.
+Manually reversing these functions would be significantly detremental to my mental health, so instead I'll use symbolic execution to find an execution path that leads to the flag print and what the file contents need to be in order for this path to execute. Angr is a symbolic execution engine for python that utilizes microsoft's SMT z3 solver and a simulation manager to manage execution states. It is also capable of file system emulation. Using this feature will be simpler than alternative methods of symbol placement, such as directly injecting into memory.
 
 <a name="angr"></a> 
 # Part 2: I'm Angry FS
@@ -106,7 +106,7 @@ The last line is interesting and I initially had to get help with this as Angr h
 ```python3
 print(b"Input: "+simgr.found[0].posix.closed_fds[0][1].concretize())
 ```
-Looking at the source of <a href="https://github.com/angr/angr/blob/master/angr/state_plugins/posix.py">Angr's posix</a> can help clarify this line a bit better. A deep copy of the SimState is created the closed_fds copy is a list of the super object's closed_fds, which is also a list. This line accesses the right file descriptor and patches the input together using `concretize`.
+Looking at the source of <a href="https://github.com/angr/angr/blob/master/angr/state_plugins/posix.py">Angr's posix</a> can help clarify this line a bit better. A deep copy of the SimState is created and the the closed_fds copy is a list of the super object's closed_fds, which is also a list. This line accesses the right file descriptor and patches the input together using `concretize`.
 <p align="center"> 
   <img src="/assets/2023-03-23/Screenshot_11.png" /> 
 </p> 
