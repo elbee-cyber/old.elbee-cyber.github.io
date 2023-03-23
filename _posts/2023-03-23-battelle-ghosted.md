@@ -6,6 +6,10 @@ title: Ghosted (Battelle)
 Published on: **2023-03-23** and last edited on: **2023-03-23** 
  
  
+ 
+ 
+ 
+ 
 ## Ghosted (Battelle)
  
 The following is a writeup for a easy/introductory binary exploitation challenge made by Battelle as one of their cyber career challenges.
