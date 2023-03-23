@@ -50,6 +50,7 @@ Looking at just one of the functions reveals that it is quite complicated.
   <img src="/assets/2023-03-23/Screenshot_9.png" /> 
 </p> 
 Manually reversing these functions would be significantly detremental to my mental health, so instead I'll use symbolic execution to find an execution path that leads to the flag print and what the file contents need to be in order for this path to execute. Angr is a symbolic execution engine for python that utilizes microsoft's Z3 solver and a simulation manager to manage execution states. It is also capable of file system emulation. Using this feature will be simpler than alternative methods of symbol placement such as directly in memory.
+
 <a name="angr"></a> 
 # Part 2: I'm Angry FS
 The following is my solve script:
@@ -69,10 +70,10 @@ def win(state): # Check stdout for "flag{" and print flag
                 print("Flag: flag"+out.split("flag")[1][:-3])
         return "flag{" in out
 
-simgr = p.factory.simulation_manager(s) # Create simulation manager
-simgr.explore(find=win, avoid=0x80490ce) # Find path to flag with win, avoid fail block
+simgr = p.factory.simulation_manager(s)
+simgr.explore(find=win, avoid=0x80490ce)
 
-print(b"Input: "+simgr.found[0].posix.closed_fds[0][1].concretize()) # Print contents of closed file descriptor from the found state
+print(b"Input: "+simgr.found[0].posix.closed_fds[0][1].concretize())
 ```
 
 Let's step through it to understand it better.
@@ -83,10 +84,34 @@ s = p.factory.blank_state(addr=0x8048f46)
 
 symbol = claripy.BVS('file',8*0xf)
 ```
-Next a SimFile object is created with the name "chow.down" and whose content is the symbolic data just created. It is then inserted into the simulated file system.
+Next a SimFile object is created with the name "chow.down" and whose content is the symbolic data. It is then inserted into the simulated file system.
 ```python3
 f = angr.storage.SimFile("chow.down", content=symbol)
 s.fs.insert("chow.down",f)
 ```
 
+Moving on a function to check for a valid state is created. It checks for the substring "flag{" in the stdout and prints it. Then the simulation manager is created and explored with find set to this function and avoid set to the fail block.
+```python3
+def win(state): # Check stdout for "flag{" and print flag
+        out = str(state.posix.dumps(sys.stdout.fileno()))
+        if "flag{" in out:
+                print("Flag: flag"+out.split("flag")[1][:-3])
+        return "flag{" in out
 
+simgr = p.factory.simulation_manager(s)
+simgr.explore(find=win, avoid=0x80490ce)
+```
+
+The last line is interesting and I initially had to get help with this as Angr has some issues with managing file descriptors. Essentially its purpose is to print out the symbolic content of the file that led to the success block.
+```python3
+print(b"Input: "+simgr.found[0].posix.closed_fds[0][1].concretize())
+```
+Looking at the source of <a href="https://github.com/angr/angr/blob/master/angr/state_plugins/posix.py">Angr's posix</a> can help clarify this line a bit better. A deep copy of the SimState is created the closed_fds copy is a list of the super object's closed_fds, which is also a list. This line accesses the right file descriptor and patches the input together using `concretize`.
+<p align="center"> 
+  <img src="/assets/2023-03-23/Screenshot_11.png" /> 
+</p> 
+
+With that, the challenge is solved.
+<p align="center"> 
+  <img src="/assets/2023-03-23/Screenshot_12.png" /> 
+</p> 
