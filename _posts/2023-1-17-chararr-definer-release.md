@@ -54,3 +54,5 @@ Minor optimization change on new release: https://github.com/elbee-cyber/analyze
 <a name="resolved"></a>
 # All Issues Resolved and Plugin Available | 1/19/2023
 
+# Plugin does not detect strings in all cases, working on fix with higher success rate | 6/26/2023
+
